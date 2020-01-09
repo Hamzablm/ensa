@@ -24,10 +24,11 @@ SET default_with_oids = false;
 -- Name: category; Type: TABLE; Schema: public; Owner: nasser
 --
 
-CREATE TABLE public.category (
-                                 id_category integer NOT NULL,
-                                 name character varying(200),
-                                 url_category character varying(200)
+CREATE TABLE public.category
+(
+    id_category  integer NOT NULL,
+    name         character varying(200),
+    url_category character varying(200)
 );
 
 
@@ -37,13 +38,16 @@ ALTER TABLE public.category OWNER TO nasser;
 -- Name: category_id_category_seq; Type: SEQUENCE; Schema: public; Owner: nasser
 --
 
-CREATE SEQUENCE public.category_id_category_seq
+CREATE
+SEQUENCE public.category_id_category_seq
     AS integer
-    START WITH 1
+    START
+WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
-    CACHE 1;
+    CACHE
+1;
 
 
 ALTER TABLE public.category_id_category_seq OWNER TO nasser;
@@ -52,20 +56,22 @@ ALTER TABLE public.category_id_category_seq OWNER TO nasser;
 -- Name: category_id_category_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nasser
 --
 
-ALTER SEQUENCE public.category_id_category_seq OWNED BY public.category.id_category;
+ALTER
+SEQUENCE public.category_id_category_seq OWNED BY public.category.id_category;
 
 
 --
 -- Name: legacy_price; Type: TABLE; Schema: public; Owner: nasser
 --
 
-CREATE TABLE public.legacy_price (
-                                     id_price integer NOT NULL,
-                                     new_price integer,
-                                     date date,
-                                     id_product integer,
-                                     id_category integer,
-                                     id_store integer
+CREATE TABLE public.legacy_price
+(
+    id_price    integer NOT NULL,
+    new_price   integer,
+    date        date,
+    id_product  integer,
+    id_category integer,
+    id_store    integer
 );
 
 
@@ -75,13 +81,16 @@ ALTER TABLE public.legacy_price OWNER TO nasser;
 -- Name: legacy_price_id_price_seq; Type: SEQUENCE; Schema: public; Owner: nasser
 --
 
-CREATE SEQUENCE public.legacy_price_id_price_seq
+CREATE
+SEQUENCE public.legacy_price_id_price_seq
     AS integer
-    START WITH 1
+    START
+WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
-    CACHE 1;
+    CACHE
+1;
 
 
 ALTER TABLE public.legacy_price_id_price_seq OWNER TO nasser;
@@ -90,24 +99,26 @@ ALTER TABLE public.legacy_price_id_price_seq OWNER TO nasser;
 -- Name: legacy_price_id_price_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nasser
 --
 
-ALTER SEQUENCE public.legacy_price_id_price_seq OWNED BY public.legacy_price.id_price;
+ALTER
+SEQUENCE public.legacy_price_id_price_seq OWNED BY public.legacy_price.id_price;
 
 
 --
 -- Name: product; Type: TABLE; Schema: public; Owner: nasser
 --
 
-CREATE TABLE public.product (
-                                id_product integer NOT NULL,
-                                name character varying(200),
-                                sales integer,
-                                total_rating character varying(50),
-                                date_product date,
-                                url_image character varying(500),
-                                url_product character varying(500),
-                                id_category integer,
-                                id_store integer,
-                                price character varying(50)
+CREATE TABLE public.product
+(
+    id_product   integer NOT NULL,
+    name         character varying(200),
+    sales        integer,
+    total_rating character varying(50),
+    date_product date,
+    url_image    character varying(500),
+    url_product  character varying(500),
+    id_category  integer,
+    id_store     integer,
+    price        character varying(50)
 );
 
 
@@ -117,13 +128,16 @@ ALTER TABLE public.product OWNER TO nasser;
 -- Name: product_id_product_seq; Type: SEQUENCE; Schema: public; Owner: nasser
 --
 
-CREATE SEQUENCE public.product_id_product_seq
+CREATE
+SEQUENCE public.product_id_product_seq
     AS integer
-    START WITH 1
+    START
+WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
-    CACHE 1;
+    CACHE
+1;
 
 
 ALTER TABLE public.product_id_product_seq OWNER TO nasser;
@@ -132,18 +146,20 @@ ALTER TABLE public.product_id_product_seq OWNER TO nasser;
 -- Name: product_id_product_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nasser
 --
 
-ALTER SEQUENCE public.product_id_product_seq OWNED BY public.product.id_product;
+ALTER
+SEQUENCE public.product_id_product_seq OWNED BY public.product.id_product;
 
 
 --
 -- Name: store; Type: TABLE; Schema: public; Owner: nasser
 --
 
-CREATE TABLE public.store (
-                              id_store integer NOT NULL,
-                              name character varying(200),
-                              total_rating character varying(50),
-                              url_store character varying(1000)
+CREATE TABLE public.store
+(
+    id_store     integer NOT NULL,
+    name         character varying(200),
+    total_rating character varying(50),
+    url_store    character varying(1000)
 );
 
 
@@ -153,13 +169,16 @@ ALTER TABLE public.store OWNER TO nasser;
 -- Name: store_id_store_seq; Type: SEQUENCE; Schema: public; Owner: nasser
 --
 
-CREATE SEQUENCE public.store_id_store_seq
+CREATE
+SEQUENCE public.store_id_store_seq
     AS integer
-    START WITH 1
+    START
+WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
-    CACHE 1;
+    CACHE
+1;
 
 
 ALTER TABLE public.store_id_store_seq OWNER TO nasser;
@@ -168,7 +187,8 @@ ALTER TABLE public.store_id_store_seq OWNER TO nasser;
 -- Name: store_id_store_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nasser
 --
 
-ALTER SEQUENCE public.store_id_store_seq OWNED BY public.store.id_store;
+ALTER
+SEQUENCE public.store_id_store_seq OWNED BY public.store.id_store;
 
 
 --
