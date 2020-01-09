@@ -25,7 +25,6 @@
             <version>42.2.9.jre7</version>
         </dependency>
     </dependencies>
-<!--j-->
     <build>
         <plugins>
             <plugin>
