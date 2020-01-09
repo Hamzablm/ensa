@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: category; Type: TABLE; Schema: public; Owner: nasser
+-- Name: category; Type: TABLE; Schema: public; Owner: hamzabelmellouki
 --
 
 CREATE TABLE public.category
@@ -32,10 +32,10 @@ CREATE TABLE public.category
 );
 
 
-ALTER TABLE public.category OWNER TO nasser;
+ALTER TABLE public.category OWNER TO hamzabelmellouki;
 
 --
--- Name: category_id_category_seq; Type: SEQUENCE; Schema: public; Owner: nasser
+-- Name: category_id_category_seq; Type: SEQUENCE; Schema: public; Owner: hamzabelmellouki
 --
 
 CREATE
@@ -50,10 +50,10 @@ WITH 1
 1;
 
 
-ALTER TABLE public.category_id_category_seq OWNER TO nasser;
+ALTER TABLE public.category_id_category_seq OWNER TO hamzabelmellouki;
 
 --
--- Name: category_id_category_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nasser
+-- Name: category_id_category_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hamzabelmellouki
 --
 
 ALTER
@@ -61,7 +61,7 @@ SEQUENCE public.category_id_category_seq OWNED BY public.category.id_category;
 
 
 --
--- Name: legacy_price; Type: TABLE; Schema: public; Owner: nasser
+-- Name: legacy_price; Type: TABLE; Schema: public; Owner: hamzabelmellouki
 --
 
 CREATE TABLE public.legacy_price
@@ -75,10 +75,10 @@ CREATE TABLE public.legacy_price
 );
 
 
-ALTER TABLE public.legacy_price OWNER TO nasser;
+ALTER TABLE public.legacy_price OWNER TO hamzabelmellouki;
 
 --
--- Name: legacy_price_id_price_seq; Type: SEQUENCE; Schema: public; Owner: nasser
+-- Name: legacy_price_id_price_seq; Type: SEQUENCE; Schema: public; Owner: hamzabelmellouki
 --
 
 CREATE
@@ -93,10 +93,10 @@ WITH 1
 1;
 
 
-ALTER TABLE public.legacy_price_id_price_seq OWNER TO nasser;
+ALTER TABLE public.legacy_price_id_price_seq OWNER TO hamzabelmellouki;
 
 --
--- Name: legacy_price_id_price_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nasser
+-- Name: legacy_price_id_price_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hamzabelmellouki
 --
 
 ALTER
@@ -104,7 +104,7 @@ SEQUENCE public.legacy_price_id_price_seq OWNED BY public.legacy_price.id_price;
 
 
 --
--- Name: product; Type: TABLE; Schema: public; Owner: nasser
+-- Name: product; Type: TABLE; Schema: public; Owner: hamzabelmellouki
 --
 
 CREATE TABLE public.product
@@ -122,10 +122,10 @@ CREATE TABLE public.product
 );
 
 
-ALTER TABLE public.product OWNER TO nasser;
+ALTER TABLE public.product OWNER TO hamzabelmellouki;
 
 --
--- Name: product_id_product_seq; Type: SEQUENCE; Schema: public; Owner: nasser
+-- Name: product_id_product_seq; Type: SEQUENCE; Schema: public; Owner: hamzabelmellouki
 --
 
 CREATE
@@ -140,10 +140,10 @@ WITH 1
 1;
 
 
-ALTER TABLE public.product_id_product_seq OWNER TO nasser;
+ALTER TABLE public.product_id_product_seq OWNER TO hamzabelmellouki;
 
 --
--- Name: product_id_product_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nasser
+-- Name: product_id_product_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hamzabelmellouki
 --
 
 ALTER
@@ -151,7 +151,7 @@ SEQUENCE public.product_id_product_seq OWNED BY public.product.id_product;
 
 
 --
--- Name: store; Type: TABLE; Schema: public; Owner: nasser
+-- Name: store; Type: TABLE; Schema: public; Owner: hamzabelmellouki
 --
 
 CREATE TABLE public.store
@@ -163,10 +163,10 @@ CREATE TABLE public.store
 );
 
 
-ALTER TABLE public.store OWNER TO nasser;
+ALTER TABLE public.store OWNER TO hamzabelmellouki;
 
 --
--- Name: store_id_store_seq; Type: SEQUENCE; Schema: public; Owner: nasser
+-- Name: store_id_store_seq; Type: SEQUENCE; Schema: public; Owner: hamzabelmellouki
 --
 
 CREATE
@@ -181,10 +181,10 @@ WITH 1
 1;
 
 
-ALTER TABLE public.store_id_store_seq OWNER TO nasser;
+ALTER TABLE public.store_id_store_seq OWNER TO hamzabelmellouki;
 
 --
--- Name: store_id_store_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nasser
+-- Name: store_id_store_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hamzabelmellouki
 --
 
 ALTER
@@ -192,35 +192,35 @@ SEQUENCE public.store_id_store_seq OWNED BY public.store.id_store;
 
 
 --
--- Name: category id_category; Type: DEFAULT; Schema: public; Owner: nasser
+-- Name: category id_category; Type: DEFAULT; Schema: public; Owner: hamzabelmellouki
 --
 
 ALTER TABLE ONLY public.category ALTER COLUMN id_category SET DEFAULT nextval('public.category_id_category_seq'::regclass);
 
 
 --
--- Name: legacy_price id_price; Type: DEFAULT; Schema: public; Owner: nasser
+-- Name: legacy_price id_price; Type: DEFAULT; Schema: public; Owner: hamzabelmellouki
 --
 
 ALTER TABLE ONLY public.legacy_price ALTER COLUMN id_price SET DEFAULT nextval('public.legacy_price_id_price_seq'::regclass);
 
 
 --
--- Name: product id_product; Type: DEFAULT; Schema: public; Owner: nasser
+-- Name: product id_product; Type: DEFAULT; Schema: public; Owner: hamzabelmellouki
 --
 
 ALTER TABLE ONLY public.product ALTER COLUMN id_product SET DEFAULT nextval('public.product_id_product_seq'::regclass);
 
 
 --
--- Name: store id_store; Type: DEFAULT; Schema: public; Owner: nasser
+-- Name: store id_store; Type: DEFAULT; Schema: public; Owner: hamzabelmellouki
 --
 
 ALTER TABLE ONLY public.store ALTER COLUMN id_store SET DEFAULT nextval('public.store_id_store_seq'::regclass);
 
 
 --
--- Data for Name: category; Type: TABLE DATA; Schema: public; Owner: nasser
+-- Data for Name: category; Type: TABLE DATA; Schema: public; Owner: hamzabelmellouki
 --
 
 COPY public.category (id_category, name, url_category) FROM stdin;
@@ -238,7 +238,7 @@ COPY public.category (id_category, name, url_category) FROM stdin;
 
 
 --
--- Data for Name: legacy_price; Type: TABLE DATA; Schema: public; Owner: nasser
+-- Data for Name: legacy_price; Type: TABLE DATA; Schema: public; Owner: hamzabelmellouki
 --
 
 COPY public.legacy_price (id_price, new_price, date, id_product, id_category, id_store) FROM stdin;
@@ -246,7 +246,7 @@ COPY public.legacy_price (id_price, new_price, date, id_product, id_category, id
 
 
 --
--- Data for Name: product; Type: TABLE DATA; Schema: public; Owner: nasser
+-- Data for Name: product; Type: TABLE DATA; Schema: public; Owner: hamzabelmellouki
 --
 
 COPY public.product (id_product, name, sales, total_rating, date_product, url_image, url_product, id_category, id_store, price) FROM stdin;
@@ -297,7 +297,7 @@ COPY public.product (id_product, name, sales, total_rating, date_product, url_im
 
 
 --
--- Data for Name: store; Type: TABLE DATA; Schema: public; Owner: nasser
+-- Data for Name: store; Type: TABLE DATA; Schema: public; Owner: hamzabelmellouki
 --
 
 COPY public.store (id_store, name, total_rating, url_store) FROM stdin;
@@ -356,35 +356,35 @@ COPY public.store (id_store, name, total_rating, url_store) FROM stdin;
 
 
 --
--- Name: category_id_category_seq; Type: SEQUENCE SET; Schema: public; Owner: nasser
+-- Name: category_id_category_seq; Type: SEQUENCE SET; Schema: public; Owner: hamzabelmellouki
 --
 
 SELECT pg_catalog.setval('public.category_id_category_seq', 1, false);
 
 
 --
--- Name: legacy_price_id_price_seq; Type: SEQUENCE SET; Schema: public; Owner: nasser
+-- Name: legacy_price_id_price_seq; Type: SEQUENCE SET; Schema: public; Owner: hamzabelmellouki
 --
 
 SELECT pg_catalog.setval('public.legacy_price_id_price_seq', 1, false);
 
 
 --
--- Name: product_id_product_seq; Type: SEQUENCE SET; Schema: public; Owner: nasser
+-- Name: product_id_product_seq; Type: SEQUENCE SET; Schema: public; Owner: hamzabelmellouki
 --
 
 SELECT pg_catalog.setval('public.product_id_product_seq', 44, true);
 
 
 --
--- Name: store_id_store_seq; Type: SEQUENCE SET; Schema: public; Owner: nasser
+-- Name: store_id_store_seq; Type: SEQUENCE SET; Schema: public; Owner: hamzabelmellouki
 --
 
 SELECT pg_catalog.setval('public.store_id_store_seq', 392, true);
 
 
 --
--- Name: category category_pkey; Type: CONSTRAINT; Schema: public; Owner: nasser
+-- Name: category category_pkey; Type: CONSTRAINT; Schema: public; Owner: hamzabelmellouki
 --
 
 ALTER TABLE ONLY public.category
@@ -392,7 +392,7 @@ ALTER TABLE ONLY public.category
 
 
 --
--- Name: legacy_price legacy_price_pkey; Type: CONSTRAINT; Schema: public; Owner: nasser
+-- Name: legacy_price legacy_price_pkey; Type: CONSTRAINT; Schema: public; Owner: hamzabelmellouki
 --
 
 ALTER TABLE ONLY public.legacy_price
@@ -400,7 +400,7 @@ ALTER TABLE ONLY public.legacy_price
 
 
 --
--- Name: product product_pkey; Type: CONSTRAINT; Schema: public; Owner: nasser
+-- Name: product product_pkey; Type: CONSTRAINT; Schema: public; Owner: hamzabelmellouki
 --
 
 ALTER TABLE ONLY public.product
@@ -408,7 +408,7 @@ ALTER TABLE ONLY public.product
 
 
 --
--- Name: store store_pkey; Type: CONSTRAINT; Schema: public; Owner: nasser
+-- Name: store store_pkey; Type: CONSTRAINT; Schema: public; Owner: hamzabelmellouki
 --
 
 ALTER TABLE ONLY public.store
@@ -416,7 +416,7 @@ ALTER TABLE ONLY public.store
 
 
 --
--- Name: legacy_price legacy_price_ibfk_1; Type: FK CONSTRAINT; Schema: public; Owner: nasser
+-- Name: legacy_price legacy_price_ibfk_1; Type: FK CONSTRAINT; Schema: public; Owner: hamzabelmellouki
 --
 
 ALTER TABLE ONLY public.legacy_price
@@ -424,7 +424,7 @@ ALTER TABLE ONLY public.legacy_price
 
 
 --
--- Name: legacy_price legacy_price_ibfk_2; Type: FK CONSTRAINT; Schema: public; Owner: nasser
+-- Name: legacy_price legacy_price_ibfk_2; Type: FK CONSTRAINT; Schema: public; Owner: hamzabelmellouki
 --
 
 ALTER TABLE ONLY public.legacy_price
@@ -432,7 +432,7 @@ ALTER TABLE ONLY public.legacy_price
 
 
 --
--- Name: legacy_price legacy_price_ibfk_3; Type: FK CONSTRAINT; Schema: public; Owner: nasser
+-- Name: legacy_price legacy_price_ibfk_3; Type: FK CONSTRAINT; Schema: public; Owner: hamzabelmellouki
 --
 
 ALTER TABLE ONLY public.legacy_price
@@ -440,7 +440,7 @@ ALTER TABLE ONLY public.legacy_price
 
 
 --
--- Name: product product_ibfk_1; Type: FK CONSTRAINT; Schema: public; Owner: nasser
+-- Name: product product_ibfk_1; Type: FK CONSTRAINT; Schema: public; Owner: hamzabelmellouki
 --
 
 ALTER TABLE ONLY public.product
@@ -448,7 +448,7 @@ ALTER TABLE ONLY public.product
 
 
 --
--- Name: product product_ibfk_2; Type: FK CONSTRAINT; Schema: public; Owner: nasser
+-- Name: product product_ibfk_2; Type: FK CONSTRAINT; Schema: public; Owner: hamzabelmellouki
 --
 
 ALTER TABLE ONLY public.product

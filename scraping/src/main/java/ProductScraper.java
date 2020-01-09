@@ -9,17 +9,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
-//TODO: Refactor
+
 public class ProductScraper {
     public static void main(String[] args) throws SQLException, IOException {
+        scrapeProductsAndStoreToDatabase();
+    }
 
+    private static void scrapeProductsAndStoreToDatabase() throws SQLException, IOException {
         Connection connection = DbConnection.dbConnector();
         String query = "SELECT url_category, id_category FROM category";
         PreparedStatement stmt = connection.prepareStatement(query);
         ResultSet rs = stmt.executeQuery();
-
-
         while (rs.next()) {
             for (int y = 1; y < 6; y++) {
 
@@ -36,8 +38,14 @@ public class ProductScraper {
                         String product_name = element.select("h2.title span.name").text();
                         System.out.println("PRODUCT NAME  " + product_name + "\n");
 
-                        int product_sales = new Random(10).nextInt(300);
+                    //TODO: Solve Random problem
+
+//                        int product_sales = new Random(10).nextInt(300);
+//                        System.out.println("PRODUCT Sales " + product_sales + "\n");
+                        ThreadLocalRandom product_sales = ThreadLocalRandom.current();
                         System.out.println("PRODUCT Sales " + product_sales + "\n");
+
+
 
                         String product_rating = element.select("div.rating-stars div.total-ratings").text();
                         System.out.println("PRODUCT TOTAL RATINGS " + product_rating + "\n");
@@ -46,6 +54,7 @@ public class ProductScraper {
                         java.sql.Date product_date = new java.sql.Date(millis);
                         System.out.println("PRODUCT DATE " + product_date + "\n");
 
+                        // com.ensa.domain.Product object
                         String product_img_url = element.select("div.image-wrapper.default-state img").attr("data-src");
                         System.out.println("IMAGE URL : " + product_img_url + "\n");
 
@@ -75,7 +84,7 @@ public class ProductScraper {
                         String query2 = "INSERT INTO product (name, sales, total_rating , date_product , url_image , url_product , id_category , id_store , price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
                         PreparedStatement stmt2 = connection.prepareStatement(query2);
                         stmt2.setString(1, product_name);
-                        stmt2.setInt(2, product_sales);
+                        stmt2.setInt(2, product_sales.nextInt(300));
                         stmt2.setString(3, product_rating);
                         stmt2.setDate(4, product_date);
                         stmt2.setString(5, product_img_url);
@@ -85,16 +94,11 @@ public class ProductScraper {
                         stmt2.setString(9, product_price);
                         int rs2 = stmt2.executeUpdate();
                         System.out.println("*******************" + rs2 + "\n");
-
-
                         System.out.println("************************************************************ \n\n");
-
-
                     }
                 }
             }
         }
-
     }
 
 }

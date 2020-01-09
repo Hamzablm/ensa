@@ -1,0 +1,10 @@
+INSERT INTO public.category (id_category, name, url_category) VALUES (1, 'Chaussures Homme', 'https://www.jumia.ma/chaussures-hommes/?shipped_from=country_local');
+INSERT INTO public.category (id_category, name, url_category) VALUES (2, 'Chaussures Femme', 'https://www.jumia.ma/chaussures-femmes/?shipped_from=country_local');
+INSERT INTO public.category (id_category, name, url_category) VALUES (3, 'Fournitures de bureau', 'https://www.jumia.ma/fournitures/?shipped_from=country_local');
+INSERT INTO public.category (id_category, name, url_category) VALUES (4, 'Ustensiles de cuisine et gadgets', 'https://www.jumia.ma/cuisine-salle-manger-ustensiles-cuisine-gadgets/?shipped_from=country_local');
+INSERT INTO public.category (id_category, name, url_category) VALUES (5, 'Téléphone portable', 'https://www.jumia.ma/telephones-smartphones/?shipped_from=country_local');
+INSERT INTO public.category (id_category, name, url_category) VALUES (6, 'Tablettes', 'https://www.jumia.ma/tablettes-tactiles/?shipped_from=country_local');
+INSERT INTO public.category (id_category, name, url_category) VALUES (7, 'Télévisions', 'https://www.jumia.ma/tvs/?shipped_from=country_local');
+INSERT INTO public.category (id_category, name, url_category) VALUES (8, 'Ordinateurs', 'https://www.jumia.ma/ordinateurs-pc/?shipped_from=country_local');
+INSERT INTO public.category (id_category, name, url_category) VALUES (9, 'Stockage de données', 'https://www.jumia.ma/stockage/?shipped_from=country_local');
+INSERT INTO public.category (id_category, name, url_category) VALUES (10, 'Imprimantes et scanners', 'https://www.jumia.ma/imprimantes-pc/?shipped_from=country_local');

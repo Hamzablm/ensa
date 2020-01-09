@@ -9,10 +9,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//TODO: Refactor
+
 public class StoreScraper {
 
     public static void main(String[] args) throws SQLException, IOException {
+        scrapeStoresAndStoreToDatabase();
+    }
+
+    private static void scrapeStoresAndStoreToDatabase() throws SQLException, IOException {
         Connection connection = DbConnection.dbConnector();
         String query = "SELECT url_category FROM category";
         PreparedStatement stmt = connection.prepareStatement(query);

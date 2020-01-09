@@ -1,18 +1,17 @@
 package com.ensa.productmanager.service;
 
 import com.ensa.productmanager.dao.ProductDao;
+import com.ensa.productmanager.dao.ProductRepository;
 import com.ensa.productmanager.domain.Product;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class ProductService {
-    private ProductDao productDao;
+    private ProductRepository productRepository;
 
 
-    public List<Product> getProducts() {
+    public Iterable<Product> getAllProducts() {
 
-        return productDao.getProducts();
+        return productRepository.findAll();
     }
 }
