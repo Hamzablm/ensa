@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
 
+//TODO: Refactor
 public class ProductScraper {
     public static void main(String[] args) throws SQLException, IOException {
 

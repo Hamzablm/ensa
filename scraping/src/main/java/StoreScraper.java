@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+//TODO: Refactor
 public class StoreScraper {
 
     public static void main(String[] args) throws SQLException, IOException {
@@ -52,6 +53,8 @@ public class StoreScraper {
                         stmt2.setString(3, store_url);
                         int rs2 = stmt2.executeUpdate();
                     }
+
+                    // TODO: What's this a sat? IntelliJ is complaining about this "USING"? May be it isn't correct.
                     String query1 = "DELETE FROM store t1 USING store t2 WHERE t1.id_store < t2.id_store AND t1.name = t2.name;";
                     PreparedStatement stmt1 = connection.prepareStatement(query1);
                     int rs1 = stmt1.executeUpdate();
