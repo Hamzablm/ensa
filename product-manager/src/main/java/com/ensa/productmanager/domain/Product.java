@@ -16,6 +16,9 @@ public class Product {
     @Column
     private int weight;
 
+    public Product() {
+    }
+
     public Product(long id, String name, Currency price, int weight) {
         this.id = id;
         this.name = name;
@@ -53,5 +56,15 @@ public class Product {
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", weight=" + weight +
+                '}';
     }
 }
