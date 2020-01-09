@@ -21,15 +21,14 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @RequestMapping(value = "/listproducts", method = RequestMethod.GET)
+    @GetMapping("/products")
     public ResponseEntity<List<Product>> getProducts() {
         Iterable<Product> IterableProducts = productService.getAllProducts();
         List<Product> allProducts = new ArrayList<>();
         for (Product product : IterableProducts) {
             allProducts.add(product);
         }
-        ResponseEntity<List<Product>> responseEntity = new ResponseEntity<List<Product>>(allProducts, HttpStatus.OK);
-        return responseEntity;
+        return new ResponseEntity<>(allProducts, HttpStatus.OK);
     }
 
     @RequestMapping
@@ -38,5 +37,7 @@ public class ProductController {
         return null;
     }
 
+    @GetMapping("/legacyProducts")
+    public ResponseEntity<List<Product>> getLegacyProducts() {
 
 }
