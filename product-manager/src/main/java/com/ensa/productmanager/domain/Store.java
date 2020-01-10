@@ -1,21 +1,20 @@
 package com.ensa.productmanager.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "store", schema = "public")
 public class Store {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_store")
     private long id;
 
     @Column
     private String name;
-    @Column
+    @Column(name = "url_store")
     private String url;
-    @Column
+    @Column(name = "total_rating")
     private String totalRating;
 
     public Store() {

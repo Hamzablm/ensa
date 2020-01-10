@@ -1,30 +1,40 @@
 package com.ensa.productmanager.domain;
 
 import javax.persistence.*;
-import java.util.Currency;
+import java.util.Date;
+import java.util.List;
 
+// TODO implement natual ordering comparison
 @Entity
+@Table(name = "product", schema = "public")
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_product")
     private long id;
     @Column
     private String name;
     @Column
-    private Currency price;
-    @Column
-    private int weight;
+    private int sales;
+    @Column(name = "total_rating")
+    private String Rating;
+    @Column(name = "date_product")
+    private String date;
+    @Column(name = "url_image")
+    private String imageUrl;
+    @Column(name = "url_product")
+    private String productUrl;
+    @OneToMany
+    @JoinColumn(name = "id_store")
+    private List<Store> stores;
+    @OneToOne
+    @JoinColumn(name = "id_category")
+    private Category category;
 
     public Product() {
     }
 
-    public Product(long id, String name, Currency price, int weight) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.weight = weight;
-    }
 
     public long getId() {
         return id;
@@ -42,20 +52,60 @@ public class Product {
         this.name = name;
     }
 
-    public Currency getPrice() {
-        return price;
+    public List<Store> getStores() {
+        return stores;
     }
 
-    public void setPrice(Currency price) {
-        this.price = price;
+    public void setStores(List<Store> stores) {
+        this.stores = stores;
     }
 
-    public int getWeight() {
-        return weight;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setWeight(int weight) {
-        this.weight = weight;
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public int getSales() {
+        return sales;
+    }
+
+    public void setSales(int sales) {
+        this.sales = sales;
+    }
+
+    public String getRating() {
+        return Rating;
+    }
+
+    public void setRating(String rating) {
+        Rating = rating;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getProductUrl() {
+        return productUrl;
+    }
+
+    public void setProductUrl(String productUrl) {
+        this.productUrl = productUrl;
     }
 
     @Override
@@ -63,8 +113,13 @@ public class Product {
         return "Product{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", price=" + price +
-                ", weight=" + weight +
+                ", sales=" + sales +
+                ", Rating='" + Rating + '\'' +
+                ", date=" + date +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", productUrl='" + productUrl + '\'' +
+                ", stores=" + stores +
+                ", category=" + category +
                 '}';
     }
 }

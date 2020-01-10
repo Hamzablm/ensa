@@ -3,22 +3,18 @@ package com.ensa.productmanager.domain;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "category", schema = "public")
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_category")
     private long id;
     @Column
     private String name;
-    @Column
+    @Column(name = "url_category")
     private String url;
 
     public Category() {
-    }
-
-    public Category(long id, String name, String url) {
-        this.id = id;
-        this.name = name;
-        this.url = url;
     }
 
     public long getId() {
@@ -47,10 +43,9 @@ public class Category {
 
     @Override
     public String toString() {
-        String sb = "Category{" + "id=" + id +
+        return "Category{" + "id=" + id +
                 ", name='" + name + '\'' +
                 ", url='" + url + '\'' +
                 '}';
-        return sb;
     }
 }

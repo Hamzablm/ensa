@@ -1,9 +1,10 @@
 package com.ensa.productmanager.dao;
 
-import com.ensa.productmanager.domain.Product;
+import com.ensa.productmanager.domain.LegacyPrice;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductRepository extends CrudRepository<Product, Long> {
+public interface LegacyPriceRepository extends CrudRepository<LegacyPrice, Long> {
+
 }
