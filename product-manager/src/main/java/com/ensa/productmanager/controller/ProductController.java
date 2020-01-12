@@ -1,5 +1,6 @@
 package com.ensa.productmanager.controller;
 
+import com.ensa.productmanager.domain.LegacyPrice;
 import com.ensa.productmanager.domain.Product;
 import com.ensa.productmanager.service.ProductService;
 import org.springframework.http.HttpStatus;
@@ -8,12 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 public class ProductController {
@@ -41,10 +40,17 @@ public class ProductController {
     }
 
     // TODO: We want data a sat
-    @GetMapping("/api/legacyProducts")
-    public ResponseEntity<List<Product>> findLegacyProducts() {
-
-        return ResponseEntity.ok(null);
+    @GetMapping(value = "/api/legacyProducts")
+    public ResponseEntity<List<LegacyPrice>> findLegacyProducts(@RequestParam(required = false) String strategy) {
+        Iterable<LegacyPrice> allLegacyPrice = productService.findAllLegacyPrice();
+        List<LegacyPrice> legacyPriceList = new ArrayList<>();
+        allLegacyPrice.forEach(legacyPriceList::add);
+        if (strategy != null && strategy.equals("price")) {
+            Comparator<LegacyPrice> cmp = Comparator.comparingInt(legacyPrice ->
+                    Integer.parseInt(legacyPrice.getNewPrice()));
+            legacyPriceList.sort(cmp);
+        }
+        return ResponseEntity.ok(legacyPriceList);
     }
 
     @GetMapping("/refresh")
