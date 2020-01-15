@@ -39,7 +39,6 @@ public class ProductController {
         return ResponseEntity.of(productOptional);
     }
 
-    // TODO: We want data a sat
     @GetMapping(value = "/api/legacyProducts")
     public ResponseEntity<List<LegacyPrice>> findLegacyProducts(@RequestParam(required = false) String strategy) {
         Iterable<LegacyPrice> allLegacyPrice = productService.findAllLegacyPrice();
@@ -48,6 +47,7 @@ public class ProductController {
         if (strategy != null && strategy.equals("price")) {
             Comparator<LegacyPrice> cmp = Comparator.comparingInt(legacyPrice ->
                     Integer.parseInt(legacyPrice.getNewPrice()));
+            //https://medium.com/@hamzabelmellouki123/core-java-comparator-vs-comparable-48f4a0f1b07c
             legacyPriceList.sort(cmp);
         }
         return ResponseEntity.ok(legacyPriceList);
