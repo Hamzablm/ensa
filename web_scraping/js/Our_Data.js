@@ -1,62 +1,3 @@
-/*
-
-    var pageCounter = 1;
-    var productContainer = document.getElementById("pro");
-    var btn = document.getElementById("btn");
-
-
-    btn.addEventListener("click", function () {
-
-        var ourRequest = new XMLHttpRequest();
-        ourRequest.open('GET', './response.json');
-        //ourRequest.open('GET', 'http://localhost:8080/api/products' + pageCounter + '.json');
-        ourRequest.onload = function () {
-            if (ourRequest.status >= 200 && ourRequest.status < 400) {
-                var ourData = JSON.parse(ourRequest.responseText);
-                // renderHTML(ourData);
-                console.log(ourData[2]);
-            } else {
-                console.log("We connected to the server, but it returned an error.");
-            }
-
-        };
-
-        ourRequest.onerror = function () {
-            console.log("Connection error");
-        };
-        /!*
-            ourRequest.send();
-            pageCounter++;
-            if (pageCounter > 3) {
-                btn.classList.add("hide-me");
-            }
-
-         *!/
-    });
-
-
-    function renderHTML(data) {
-        var htmlString = "";
-
-        for (i = 0; i < data.length; i++) {
-            htmlString += "<tr> <th scope=\"row\">" + i +
-                "<td>" + data[i].id +
-                "</td> <td>" + data[i].name +
-                "</td> <td>" + data[i].sales +
-                "</td> <td>" + data[i].rating +
-                "</td> <td>" + data[i].date +
-                "</td> <td>" + data[i].price +
-                "</td> <td>" + data[i].category.name +
-                "</td> <td>" + data[i].store.name +
-                "</td> <td>" + data[i].productUrl +
-                "</td> <td> <img src='" + data[i].imageUrl + "' alt=" + data[i].name + " /> </td>  </tr>";
-
-        }
-
-        productContainer.insertAdjacentHTML('beforeend', htmlString);
-    }
-}
-*/
 window.onload= function () {
     var pageCounter = 1;
     var productContainer = document.getElementById("pro");
@@ -101,14 +42,38 @@ window.onload= function () {
                 "</td> <td>" + data[i].price +
                 "</td> <td>" + data[i].category.name +
                 "</td> <td>" + data[i].store +
-                "</td> <td>" + data[i].productUrl +
-                "</td> <td> <img src='" + data[i].imageUrl + "' alt=" + data[i].name + " /> </td>  </tr>";
+                "</td> <td> <a href='" + data[i].productUrl +"'> " + data[i].productUrl +"</a>"+
+                "</td> <td> <a href='" + data[i].imageUrl +"' target='_blank'><img src='" + data[i].imageUrl + "' alt=" + data[i].name + " /></a></td>  </tr>";
+                // "</td> <td> <img src='" + data[i].imageUrl + "' alt=" + data[i].name + " /> </td>  </tr>";
 
         }
 
         productContainer.insertAdjacentHTML('beforeend', htmlString);
 
     }
+
+    $(document).ready(function(){
+        $("#MySearch").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#pro tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+    /*
+    //todo:sorting by id_product
+    $(document).ready(function() {
+        $('#pro').DataTable( {
+            "Id of Product": [[ 0, "desc" ]] // "0" means First column and "desc" is order type;
+        } );
+    } );
+    var table = $('#pro').DataTable();
+
+    table
+        .columns( '.Id of Product' )
+        .order( 'desc' )
+        .draw();
+        */
 }
 
 
