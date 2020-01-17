@@ -32,6 +32,12 @@ public class Product {
     @JoinColumn(name = "id_category")
     private Category category;
 
+    //todo:add of abdo
+    @OneToMany
+    @JoinColumn(name = "price")
+    private List<LegacyPrice> price;
+    //
+
     public Product() {
     }
 
@@ -108,6 +114,18 @@ public class Product {
         this.productUrl = productUrl;
     }
 
+    //todo:add of abdo
+
+    public List<LegacyPrice> getPrice() {
+        return price;
+    }
+
+    public void setPrice(List<LegacyPrice> price) {
+        this.price = price;
+    }
+
+    //
+
     @Override
     public String toString() {
         return "Product{" +
@@ -120,6 +138,7 @@ public class Product {
                 ", productUrl='" + productUrl + '\'' +
                 ", stores=" + stores +
                 ", category=" + category +
+                ", price=" + price +
                 '}';
     }
 }

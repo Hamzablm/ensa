@@ -1,4 +1,5 @@
 package main.java;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -12,19 +13,24 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.Random;
 
-public class UpdateProduct {
+import static org.postgresql.jdbc.PgResultSet.toInt;
+
+public class UpdateProductAndPrice {
 
     public static void main(String[] args) throws SQLException, IOException {
+        UpdateToDatabase();
+    }
+    private static void UpdateToDatabase() throws SQLException, IOException{
         Connection connection = DbConnection.dbConnector();
         String query = "SELECT url_category, id_category FROM category";
         PreparedStatement stmt = connection.prepareStatement(query);
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-            for (int y = 1; y < 6; y++) {
+            for (int y = 1; y < 3; y++) {
 
                 String url = rs.getString("url_category");
                 int idCategory = rs.getInt("id_category");
-                System.out.println(idCategory + "\n");
+//                System.out.println(idCategory + "\n");
                 String dynamic_url = url + "&page=" + y;
                 Document doc = Jsoup.connect(dynamic_url).get();
                 Elements body = doc.select(".sku.-gallery");
@@ -34,26 +40,26 @@ public class UpdateProduct {
                         continue;
                     } else {
                         String product_name = element.select("h2.title span.name").text();
-                        System.out.println("PRODUCT NAME  " + product_name + "\n");
+//                        System.out.println("PRODUCT NAME  " + product_name + "\n");
 
                         int product_sales = new Random(10).nextInt(300);
-                        System.out.println("PRODUCT Sales " + product_sales + "\n");
+//                        System.out.println("PRODUCT Sales " + product_sales + "\n");
 
                         String product_rating = element.select("div.rating-stars div.total-ratings").text();
-                        System.out.println("PRODUCT TOTAL RATINGS " + product_rating + "\n");
+//                        System.out.println("PRODUCT TOTAL RATINGS " + product_rating + "\n");
 
                         long millis = System.currentTimeMillis();
                         java.sql.Date product_date = new java.sql.Date(millis);
-                        System.out.println("PRODUCT DATE " + product_date + "\n");
+//                        System.out.println("PRODUCT DATE " + product_date + "\n");
 
                         String product_img_url = element.select("div.image-wrapper.default-state img").attr("data-src");
-                        System.out.println("IMAGE URL : " + product_img_url + "\n");
+//                        System.out.println("IMAGE URL : " + product_img_url + "\n");
 
                         String product_url = element.select("a.link").attr("href");
-                        System.out.println("PRODUCT URL  " + product_url + "\n");
+//                        System.out.println("PRODUCT URL  " + product_url + "\n");
 
                         String product_price = element.select("span.price span").attr("data-price");
-                        System.out.println("PRODUCT PRICE: " + product_price + "\n");
+//                        System.out.println("PRODUCT PRICE: " + product_price + "\n");
 
                         String query3 = "SELECT * FROM product where url_product = ? ";
                         PreparedStatement stmt3 = connection.prepareStatement(query3);
@@ -69,7 +75,7 @@ public class UpdateProduct {
                                 String newPrice = product_price ;
                                 String query1 = "INSERT INTO legacy_price (new_price, date , id_product , id_category , id_store) VALUES (? , ? ,?, ?, ?)";
                                 PreparedStatement stmt1 = connection.prepareStatement(query1);
-                                stmt1.setString(1, newPrice);
+                                stmt1.setInt(1, toInt(newPrice));
                                 stmt1.setDate(2, (java.sql.Date) date_prod);
                                 stmt1.setInt(3, id_prod);
                                 stmt1.setInt(4, id_categ);
@@ -90,9 +96,9 @@ public class UpdateProduct {
                         stmt4.setString(6, product_price);
                         stmt4.setString(7, product_url);
                         int rs4 = stmt4.executeUpdate();
-                        System.out.println("*******************" + rs4 + "\n");
+//                        System.out.println("*******************" + rs4 + "\n");
                         //prob : random generates same number for product's sales
-                        System.out.println("************************************************************ \n\n");
+//                        System.out.println("************************************************************ \n\n");
 
 
                     }

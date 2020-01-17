@@ -6,10 +6,7 @@ import com.ensa.productmanager.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.DateFormat;
 import java.util.*;
@@ -23,6 +20,7 @@ public class ProductController {
         this.productService = productService;
     }
 
+    @CrossOrigin(origins = "http://localhost:63342")
     @GetMapping("/api/products")
     public ResponseEntity<List<Product>> findAllProducts() {
         Iterable<Product> IterableProducts = productService.findAllProducts();
@@ -33,12 +31,15 @@ public class ProductController {
         return new ResponseEntity<>(allProducts, HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "http://localhost:63342")
     @PostMapping("/api/products")
     public ResponseEntity<Product> findProductById(@RequestParam("id") long id) {
         Optional<Product> productOptional = productService.findById(id);
         return ResponseEntity.of(productOptional);
     }
 
+
+    @CrossOrigin(origins = "http://localhost:63342")
     @GetMapping(value = "/api/legacyProducts")
     public ResponseEntity<List<LegacyPrice>> findLegacyProducts(@RequestParam(required = false) String strategy) {
         Iterable<LegacyPrice> allLegacyPrice = productService.findAllLegacyPrice();
@@ -47,12 +48,12 @@ public class ProductController {
         if (strategy != null && strategy.equals("price")) {
             Comparator<LegacyPrice> cmp = Comparator.comparingInt(legacyPrice ->
                     Integer.parseInt(legacyPrice.getNewPrice()));
-            //https://medium.com/@hamzabelmellouki123/core-java-comparator-vs-comparable-48f4a0f1b07c
             legacyPriceList.sort(cmp);
         }
         return ResponseEntity.ok(legacyPriceList);
     }
 
+    @CrossOrigin(origins = "http://localhost:63342")
     @GetMapping("/refresh")
     public ResponseEntity<List<Product>> refreshDatabase() {
         //TODO: scrap products and stores
