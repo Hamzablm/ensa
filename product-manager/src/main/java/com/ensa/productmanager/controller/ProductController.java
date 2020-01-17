@@ -1,5 +1,6 @@
 package com.ensa.productmanager.controller;
 
+import com.ensa.productmanager.domain.Category;
 import com.ensa.productmanager.domain.LegacyPrice;
 import com.ensa.productmanager.domain.Product;
 import com.ensa.productmanager.service.ProductService;
@@ -58,5 +59,12 @@ public class ProductController {
     public ResponseEntity<List<Product>> refreshDatabase() {
         //TODO: scrap products and stores
         return new ResponseEntity<>(null, HttpStatus.OK);
+    }
+
+    @CrossOrigin(origins = "http://localhost:63342")
+    @PostMapping("/api/productsByCategory")
+    public ResponseEntity<List<Product>> findProductsByCategory(@RequestParam("id") long id) {
+        List<Product> productsByCategory = productService.findProductsByCategory(id);
+        return ResponseEntity.of(Optional.of(productsByCategory));
     }
 }
